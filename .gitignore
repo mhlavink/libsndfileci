@@ -65,7 +65,6 @@ examples/sndfilehandle
 include/sndfile.h
 libsndfile-*.tar.xz
 libsndfile-testsuite-*
-libsndfile.spec
 libtool
 man/sndfile-deinterleave.1
 man/sndfile-metadata-set.1
