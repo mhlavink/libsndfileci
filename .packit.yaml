@@ -1,0 +1,34 @@
+downstream_package_name: libsndfile
+upstream_package_name: libsndfile
+specfile_path: libsndfile.spec
+files_to_sync: 
+  - libsndfile.spec
+  - .packit.yaml
+actions:
+  get-current-version: bash -c "grep 'AC_INIT' configure.ac | grep -oP '\[\K[^]]+?(?=\])' | awk 'NR==2'"
+srpm_build_deps:
+- automake
+- gcc-c++
+- alsa-lib-devel
+- flac-devel
+- gcc
+- libogg-devel
+- libvorbis-devel
+- pkgconfig
+- sqlite-devel
+- gsm-devel
+- libtool
+- make
+- python3
+- opus-devel
+- lame-devel
+- mpg123-devel
+
+jobs:
+- job: copr_build
+  trigger: commit
+  owner: mhlavink
+  project: libsndfileci
+  targets: [fedora-latest-stable]
+  enable_net: true
+
